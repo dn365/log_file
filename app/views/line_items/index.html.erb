@@ -1,0 +1,26 @@
+<h1>Listing line_items</h1>
+
+<br/>
+<h2><%= @node.name %></h2>
+<%= link_to 'New log', new_node_log_path %> | 
+<%= link_to "Back", nodes_path %>
+<table class="table table-hover"> 
+  <tr>
+    <th>Log name</th>
+    <th>Log path</th>
+    <th>Operate Type</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @line_items.each do |line_item| %>
+  <tr>  
+    <td><%= line_item.log.title %></td>
+	<td><%= line_item.log.filepath %></td>
+	<td><%= line_item.log.operate_type %></td>
+	<td><%= link_to "Edit", edit_node_log_path(:id => line_item.log_id) %> | 
+		<%= link_to "Destroy", node_log_path(:id => line_item.log_id ) ,method: :delete, data: { confirm: 'Are you sure?' }%>
+  </tr>
+<% end %>
+</table>
+

@@ -1,0 +1,43 @@
+<%= form_for [@node, @log], :class => "form-horizontal" do |f| %>
+  <% if @log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@log.errors.count, "error") %> prohibited this log from being saved:</h2>
+      <ul>
+      <% @log.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :title %>
+	</div>
+  </div>
+  <div class="control-group">
+    <%= f.label :filepath %>
+    <%= f.text_field :filepath %>
+  </div>
+
+  <div class="input-append">
+    <%= f.label :file_size %>
+    <%= f.number_field :file_size, :value => 500 %><span class="add-on">MB</span>
+  </div>
+  <div class="control-group">
+    <%= f.label :operate_type %>
+	<%= f.select :operate_type, Log::OPERATE_TYPES, :selected=> 2 %>
+  </div>
+  <div class="input-prepend">
+    <%= f.label :reserve_dates %>
+    <span class="add-on">Dates</span><%= f.number_field :reserve_dates, :value => 7 %>
+  </div>
+  <div class="control-group">
+    <%= f.label :cron_time %>
+    <%= f.time_select :cron_time, :include_blank => true, :width => 5 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

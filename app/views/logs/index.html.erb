@@ -1,0 +1,27 @@
+<h1>Listing logs</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Filepath</th>
+    <th>File size</th>
+    <th>Operate type</th>
+    <th>Reserve dates</th>
+    <th>Cron time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @logs.each do |log| %>
+  <tr>
+    <td><%= log.title %></td>
+    <td><%= log.filepath %></td>
+    <td><%= log.file_size %></td>
+    <td><%= log.operate_type %></td>
+    <td><%= log.reserve_dates %></td>
+    <td><%= log.cron_time %></td>
+  </tr>
+<% end %>
+</table>
+

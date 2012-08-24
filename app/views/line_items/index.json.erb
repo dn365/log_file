@@ -1,0 +1,11 @@
+{
+  id: "<%= @node.name %>",
+  <% @line_items.each do |line_item| %>
+  "<%= line_item.log.title %>": {
+      "file_path": "<%= line_item.log.filepath %>",
+      "file_size": "<%= line_item.log.file_size %>",
+      "operate_type": "<%= line_item.log.operate_type %>",
+      "dates": "<%= line_item.log.reserve_dates || "0" %>"
+	},
+	<% end %>
+}

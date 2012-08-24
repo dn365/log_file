@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  filepath: MyString
+  file_size: 1
+  operate_type: MyString
+  reserve_dates: 1
+  cron_time: 2012-08-22 17:54:50
+
+two:
+  title: MyString
+  filepath: MyString
+  file_size: 1
+  operate_type: MyString
+  reserve_dates: 1
+  cron_time: 2012-08-22 17:54:50

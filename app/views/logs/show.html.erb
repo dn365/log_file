@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @log.title %>
+</p>
+
+<p>
+  <b>Filepath:</b>
+  <%= @log.filepath %>
+</p>
+
+<p>
+  <b>File size:</b>
+  <%= @log.file_size %>
+</p>
+
+<p>
+  <b>Operate type:</b>
+  <%= @log.operate_type %>
+</p>
+
+<p>
+  <b>Reserve dates:</b>
+  <%= @log.reserve_dates %>
+</p>
+
+<p>
+  <b>Cron time:</b>
+  <%= @log.cron_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>

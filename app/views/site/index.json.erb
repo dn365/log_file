@@ -1,0 +1,20 @@
+{
+  "id": "nodes",
+  <% x = 0 %>
+  <% @nodes.each do |node| %>
+  <% x += 1 %>
+  "<%= node.name %>": {
+	<% i = 0 %>
+	<% node.line_items.each do |line_item| %>		
+	<% i += 1 %>
+	"<%= line_item.log.title %>": {
+		"file_path": "<%= line_item.log.filepath %>",
+		"file_size": <%= line_item.log.file_size || "500" %>,
+		"operate_type": <%= line_item.log.operate_type %>,
+		"dates": <%= line_item.log.reserve_dates || "0" %>,
+		"cron": "<%= line_item.log.cron_time.strftime("%H:%M") %>"
+		}<%= "," unless i == node.line_items.count %>
+	<% end %>
+	}<%= "," unless x == @nodes.count %>
+<% end %>
+}
