@@ -1,15 +1,19 @@
-<h1>Listing line_items</h1>
+<h2>Listing Node Logs</h2>
 
 <br/>
-<h2><%= @node.name %></h2>
-<%= link_to 'New log', new_node_log_path %> | 
-<%= link_to "Back", nodes_path %>
+<h3><%= @node.name %></h3>
+<div class="input-prepend">
+	<%= link_to 'New Log', new_node_log_path, :class => "btn" %>
+	<%= link_to "Back", nodes_path, :class => "btn" %>
+</div>
+
+
 <table class="table table-hover"> 
   <tr>
-    <th>Log name</th>
+    <th>Matches</th>
     <th>Log path</th>
     <th>Operate Type</th>
-    <th></th>
+    <th>File Age</th>
     <th></th>
   </tr>
 
@@ -17,7 +21,8 @@
   <tr>  
     <td><%= line_item.log.title %></td>
 	<td><%= line_item.log.filepath %></td>
-	<td><%= line_item.log.operate_type %></td>
+	<td><%= case line_item.log.operate_type when 0; "RM" when 1; "Archive" when 2; "Cat null" end %></td>
+	<td><%= line_item.log.reserve_dates %></td>
 	<td><%= link_to "Edit", edit_node_log_path(:id => line_item.log_id) %> | 
 		<%= link_to "Destroy", node_log_path(:id => line_item.log_id ) ,method: :delete, data: { confirm: 'Are you sure?' }%>
   </tr>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824170337) do
+ActiveRecord::Schema.define(:version => 20120829031516) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,12 +56,14 @@ ActiveRecord::Schema.define(:version => 20120824170337) do
   create_table "logs", :force => true do |t|
     t.string   "title"
     t.string   "filepath"
-    t.integer  "file_size"
-    t.string   "operate_type"
-    t.integer  "reserve_dates"
+    t.string   "file_size"
+    t.integer  "operate_type"
+    t.string   "reserve_dates"
     t.time     "cron_time"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "recurse"
+    t.integer  "file_time"
   end
 
   create_table "nodes", :force => true do |t|

@@ -8,12 +8,10 @@ Logfiles::Application.routes.draw do
   get "site/index"
   get "site/uptime"
   
-  namespace :admin do
     resources :nodes do
       resources :line_items
       resources :logs
     end
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

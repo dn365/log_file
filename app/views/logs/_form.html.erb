@@ -1,3 +1,4 @@
+<div>
 <%= form_for [@node, @log], :class => "form-horizontal" do |f| %>
   <% if @log.errors.any? %>
     <div id="error_explanation">
@@ -11,33 +12,46 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :title, :class => "control-label" %>
+	<label>Matches</label>
 	<div class="controls">
     	<%= f.text_field :title %>
+		<span class="help-block">Example *.log app[/\d+/].tmp, Values separated by spaces.</span>
 	</div>
   </div>
   <div class="control-group">
-    <%= f.label :filepath %>
+    <label>File Path</label>
     <%= f.text_field :filepath %>
   </div>
-
+  <div class="control-group">
+	<label>Recurse</label>
+	<%= f.select :recurse, Log::RECURSE_TYPES, :selected => 0 %>
+  </div>
+  <div class="control-group">
+	<label>File Time</label>
+	<%= f.select :file_time, Log::FILETIME_TYPES, :selected => 1 %>
+  </div>
+  <div class="control-group">
+	<lable>Operate Type</label><br>
+	<%= f.select :operate_type, Log::OPERATE_TYPES, :selected=> 0 %>
+  </div>
+  <br/>
   <div class="input-append">
-    <%= f.label :file_size %>
-    <%= f.number_field :file_size, :value => 500 %><span class="add-on">MB</span>
+    <label>File Size</label>
+    <%= f.text_field :file_size, :placeholder=>"Input values or empty"%>
+	<span class="help-block">Example 10b(byte), 10k(KB), 10m(MB), 10g(GB), 10t(TB)</span>
   </div>
-  <div class="control-group">
-    <%= f.label :operate_type %>
-	<%= f.select :operate_type, Log::OPERATE_TYPES, :selected=> 2 %>
-  </div>
+  
   <div class="input-prepend">
-    <%= f.label :reserve_dates %>
-    <span class="add-on">Dates</span><%= f.number_field :reserve_dates, :value => 7 %>
+    <label>File Age</label>
+    <%= f.text_field :reserve_dates, :value => "1w" %>
+	<span class="help-block">Example 3h(hours), 2d(days), 1w(weeks)</span>
   </div>
   <div class="control-group">
-    <%= f.label :cron_time %>
+    <label>Cron</label>
     <%= f.time_select :cron_time, :include_blank => true, :width => 5 %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
