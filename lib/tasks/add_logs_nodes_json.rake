@@ -3,10 +3,12 @@ require "open-uri"
 
 task :default => [:databag]
 def file_write
-  url = "http://mytest:3000/site/index.json"
+  url = "http://log.my.com:8080/site/index.json"
   json_file = open(url).read
-  file = File.open("/tmp/node.json","w")
-  file.puts(json_file)
+  file = Tempfile.new("node.json","w")
+  file.write(json_file)
+  file.rewind
+  system("knife data bag from file logs #{file.path}")
   file.close
 end
 
